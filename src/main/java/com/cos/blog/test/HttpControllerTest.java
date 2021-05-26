@@ -15,6 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HttpControllerTest {
 
+	private static final String TAG = "HttpController Test : ";
+	
+	// http://localhost:8080/http/lombok
+	@GetMapping("/http/lombok")
+	public String lombokTest() {
+		Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
+		System.out.println(TAG+"getter : "+m.getUsername());
+		m.setUsername("cos");
+		System.out.println(TAG+"setter : "+m.getUsername());
+		return "lombok test 완료";
+	}
+	
 	// http://localhost:8080/http/get (select)
 	@GetMapping("/http/get")
 	public String getTest(Member m) {	// id=1&username=ssar&password=1234&email=ssar@nate.com
